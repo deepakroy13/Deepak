@@ -294,6 +294,10 @@ def main():
 
     data = pd.read_csv("filled_indices.csv",parse_dates=["tradedate"])
 
+    data.sort_values(["index_name","tradedate"], inplace=True)
+    data.reset_index(drop=True, inplace=True)
+    
+    data = data[data['tradedate'] >= '2010-01-01']
     processed=[]
     for _,df in data.groupby("index_name"):
         if len(df)>=MIN_HISTORY_DAYS:
