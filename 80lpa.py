@@ -292,7 +292,8 @@ def analyze_performance(equity_curve, raw_data):
 
 def main():
 
-    data = pd.read_csv("filled_indices.csv",parse_dates=["tradedate"])
+    csv_name = input("Enter the name of the csv file for the input: (eg filled_indices.csv)")
+    data = pd.read_csv(csv_name,parse_dates=["tradedate"])
 
     data.sort_values(["index_name","tradedate"], inplace=True)
     data.reset_index(drop=True, inplace=True)
